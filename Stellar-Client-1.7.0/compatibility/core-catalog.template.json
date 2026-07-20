@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "entries": [
+    {
+      "minecraft": "1.21.8",
+      "loader": "fabric",
+      "version": "1.7.0",
+      "fileName": "stellar-core-1.7.0+1.21.8.jar",
+      "url": "https://cdn.example.invalid/stellar-core-1.7.0+1.21.8.jar",
+      "size": 0,
+      "hashes": {
+        "sha512": "REPLACE_AFTER_BUILD"
+      }
+    }
+  ]
+}

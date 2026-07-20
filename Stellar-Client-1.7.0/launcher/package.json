@@ -1,0 +1,57 @@
+{
+  "name": "stellar-client",
+  "version": "1.7.0",
+  "description": "Original Minecraft Java launcher with Microsoft and Discord OAuth, Fabric profiles, Modrinth one-click installs, themes, store and Stellar social features.",
+  "main": "src/main.js",
+  "author": "Stellar Client",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win portable --x64",
+    "dist:win": "electron-builder --win nsis portable --x64",
+    "check": "node --check src/main.js && node --check src/preload.js && node --check src/renderer/app.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "43.1.1",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "it.stellarclient.launcher",
+    "productName": "stellarClient",
+    "asar": true,
+    "files": [
+      "src/**/*",
+      "package.json",
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "artifactName": "Minecraft.${ext}",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "Minecraft.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Stellar Client"
+    }
+  }
+}

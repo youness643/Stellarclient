@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "it.stellarclient.core.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "TitleScreenMixin",
+    "GameMenuScreenMixin",
+    "InGameHudMixin",
+    "GameRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

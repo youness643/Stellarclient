@@ -1,0 +1,95 @@
+{
+  "announcements": [
+    {
+      "id": "welcome-130",
+      "title": "Stellar Client 1.7.0",
+      "body": "Nuovo sistema Discord, pannello Admin verificato, quest, Stellar Coins, Premium e store test.",
+      "type": "update",
+      "createdAt": "2026-07-20T00:00:00.000Z",
+      "author": "Stellar Team"
+    },
+    {
+      "id": "mods-130",
+      "title": "Modrinth protetto",
+      "body": "Profili separati, dipendenze obbligatorie, verifica hash e rollback senza sostituire gli item vanilla.",
+      "type": "mods",
+      "createdAt": "2026-07-19T18:00:00.000Z",
+      "author": "Stellar Team"
+    }
+  ],
+  "store": [
+    {
+      "id": "founder-cape",
+      "category": "cape",
+      "name": "Founder Cape",
+      "description": "Mantello fondatore originale Stellar.",
+      "price": 1400,
+      "premiumOnly": false,
+      "enabled": true
+    },
+    {
+      "id": "stellar-wings",
+      "category": "wings",
+      "name": "Stellar Wings",
+      "description": "Ali cosmetiche renderizzate separatamente dagli item vanilla.",
+      "price": 2200,
+      "premiumOnly": true,
+      "enabled": true
+    },
+    {
+      "id": "nebula-badge",
+      "category": "badge",
+      "name": "Nebula Badge",
+      "description": "Badge profilo Nebula.",
+      "price": 600,
+      "premiumOnly": false,
+      "enabled": true
+    },
+    {
+      "id": "orbit-emote",
+      "category": "emote",
+      "name": "Orbit Emote",
+      "description": "Emote social del client.",
+      "price": 900,
+      "premiumOnly": false,
+      "enabled": true
+    }
+  ],
+  "quests": [
+    {
+      "id": "daily-login",
+      "title": "Accesso giornaliero",
+      "description": "Apri Stellar Client e collega il profilo.",
+      "rewardCoins": 50,
+      "target": 1,
+      "event": "login",
+      "daily": true,
+      "enabled": true
+    },
+    {
+      "id": "play-30",
+      "title": "30 minuti di gioco",
+      "description": "Gioca 30 minuti con Stellar Client.",
+      "rewardCoins": 120,
+      "target": 30,
+      "event": "minutes_played",
+      "daily": true,
+      "enabled": true
+    },
+    {
+      "id": "win-3",
+      "title": "Tre vittorie",
+      "description": "Vinci tre partite su un server collegato.",
+      "rewardCoins": 180,
+      "target": 3,
+      "event": "wins",
+      "daily": true,
+      "enabled": true
+    }
+  ],
+  "users": {},
+  "friendships": {},
+  "discordLinks": {},
+  "purchases": [],
+  "auditLog": []
+}

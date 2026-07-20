@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' blob: https:; style-src 'self'; script-src 'self'; connect-src 'none'; font-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stellar Client</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="splash" class="splash">
+    <div class="splash-glow"></div>
+    <div class="splash-mark" aria-label="Stellar Client">
+      <span class="splash-ring ring-a"></span>
+      <span class="splash-ring ring-b"></span>
+      <img src="assets/logo-static.png" alt="Stellar Client">
+    </div>
+    <strong class="splash-name">STELLAR CLIENT</strong>
+    <p id="splashText">Preparazione file…</p>
+    <div class="splash-progress"><span></span></div>
+  </div>
+
+  <div id="app" class="app-shell is-loading">
+    <header class="titlebar">
+      <div class="drag-region">
+        <img src="assets/logo-static.png" class="title-logo" alt="">
+        <strong>STELLAR CLIENT</strong>
+        <span id="appVersion" class="version-tag">1.7.0</span>
+      </div>
+      <div class="window-actions">
+        <button class="window-button" data-window-action="minimize" aria-label="Riduci"><svg><use href="icons.svg#minus"></use></svg></button>
+        <button class="window-button" data-window-action="maximize" aria-label="Massimizza"><svg><use href="icons.svg#maximize"></use></svg></button>
+        <button class="window-button close" data-window-action="close" aria-label="Chiudi"><svg><use href="icons.svg#x"></use></svg></button>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-logo-wrap"><img src="assets/logo-static.png" alt="Stellar"></div>
+        <div><strong>STELLAR</strong><small>MINECRAFT CLIENT</small></div>
+      </div>
+
+      <nav class="nav-list" aria-label="Navigazione">
+        <button class="nav-item active" data-page="home"><svg><use href="icons.svg#home"></use></svg><span>Home</span></button>
+        <button class="nav-item" data-page="mods"><svg><use href="icons.svg#box"></use></svg><span>Mods</span></button>
+        <button class="nav-item" data-page="friends"><svg><use href="icons.svg#users"></use></svg><span>Amici</span></button>
+        <button class="nav-item" data-page="discord"><svg><use href="icons.svg#discord"></use></svg><span>Discord</span></button>
+        <button class="nav-item" data-page="store"><svg><use href="icons.svg#store"></use></svg><span>Store</span></button>
+        <button class="nav-item" data-page="quests"><svg><use href="icons.svg#sparkles"></use></svg><span>Quest</span></button>
+        <button class="nav-item" data-page="cosmetics"><svg><use href="icons.svg#sparkles"></use></svg><span>Cosmetici</span></button>
+        <button class="nav-item" data-page="news"><svg><use href="icons.svg#news"></use></svg><span>Annunci</span><i id="newsBadge" class="nav-badge hidden">0</i></button>
+        <button class="nav-item" data-page="settings"><svg><use href="icons.svg#settings"></use></svg><span>Impostazioni</span></button>
+        <button id="adminNav" class="nav-item hidden" data-page="admin"><svg><use href="icons.svg#shield"></use></svg><span>Admin</span></button>
+        <button class="nav-item" data-page="logs"><svg><use href="icons.svg#terminal"></use></svg><span>Console</span></button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+      <div class="wallet-chip"><svg><use href="icons.svg#sparkles"></use></svg><div><small>STELLAR COINS</small><strong id="sidebarCoins">—</strong></div><span id="sidebarPremium">FREE</span></div>
+      <button id="accountCard" class="account-card">
+        <div id="accountAvatar" class="account-avatar">?</div>
+        <div class="account-copy"><strong id="accountName">Non connesso</strong><small id="accountStatus">Account Microsoft</small></div>
+        <svg class="account-arrow"><use href="icons.svg#chevron-right"></use></svg>
+      </button>
+    </aside>
+
+    <main class="content">
+      <section class="page active" id="page-home">
+        <div class="home-hero panel">
+          <div class="hero-grid"></div>
+          <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+          <div class="hero-copy">
+            <span class="eyebrow">STELLAR CLIENT • BUILD <span id="heroBuild">1.7.0</span></span>
+            <h1>Il tuo Minecraft.<br><span>Più veloce, più pulito.</span></h1>
+            <p>Launcher originale con Fabric, Modrinth, Discord, temi e interfacce Stellar integrate dentro Minecraft.</p>
+            <div class="hero-pills"><span><i></i>Microsoft</span><span><i></i>Fabric</span><span><i></i>Modrinth</span><span><i></i>Discord</span></div>
+          </div>
+          <div class="hero-logo"><span class="hero-logo-ring"></span><img src="assets/logo-static.png" alt="Stellar Client"></div>
+        </div>
+
+        <div class="home-grid">
+          <section class="launch-card panel">
+            <div class="section-heading"><div><span class="section-kicker">AVVIO RAPIDO</span><h2>Pronto a giocare?</h2></div><span id="accountPill" class="status-pill muted">OFFLINE</span></div>
+            <div class="launch-fields">
+              <label><span>Versione stabile</span><select id="homeVersionSelect"><option value="1.21.8">1.21.8</option></select></label>
+              <label><span>Loader</span><select id="homeLoaderSelect"><option value="fabric">Fabric</option><option value="vanilla">Vanilla</option></select></label>
+            </div>
+            <div id="profileCompatibility" class="compatibility-note checking"><span class="compat-dot"></span><div><strong>Verifica compatibilità…</strong><small>Stellar sceglierà automaticamente Vanilla se Fabric non è disponibile.</small></div></div>
+            <button id="playButton" class="play-button">
+              <span class="play-icon"><svg><use href="icons.svg#play"></use></svg></span>
+              <span class="play-copy"><strong>GIOCA</strong><small id="playSubtitle">Accedi per continuare</small></span>
+              <svg class="play-chevron"><use href="icons.svg#chevron-right"></use></svg>
+            </button>
+            <div class="launch-progress"><div class="progress-track"><span id="progressBar"></span></div><div><span id="statusText">Launcher pronto.</span><b id="statusPercent">0%</b></div></div>
+          </section>
+
+          <aside class="home-side">
+            <section class="mini-card panel"><svg><use href="icons.svg#shield"></use></svg><div><span>Profilo</span><strong id="instanceSummary">Fabric • 1.21.8</strong></div><button data-open-folder="instance">Apri</button></section>
+            <section class="mini-card panel"><svg><use href="icons.svg#box"></use></svg><div><span>Mod installate</span><strong id="installedSummary">0 nel profilo</strong></div><button data-page-jump="mods">Gestisci</button></section>
+            <section class="mini-card panel"><svg><use href="icons.svg#discord"></use></svg><div><span>Discord</span><strong id="discordSummary">Non collegato</strong></div><button data-page-jump="discord">Collega</button></section>
+            <section class="mini-card panel"><svg><use href="icons.svg#store"></use></svg><div><span>Stellar Store</span><strong>Cosmetici e badge</strong></div><button data-page-jump="store">Apri</button></section>
+            <section class="announcement-teaser panel"><span class="section-kicker">ULTIMO ANNUNCIO</span><h3 id="latestAnnouncementTitle">Stellar Client</h3><p id="latestAnnouncementBody">Caricamento degli annunci…</p><button data-page-jump="news">Apri annunci <svg><use href="icons.svg#chevron-right"></use></svg></button></section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-mods">
+        <div class="page-header"><div><span class="section-kicker">MODRINTH EXPLORER</span><h1>Mods</h1><p>Catalogo compatibile per versione e loader, dipendenze obbligatorie, verifica hash e rollback automatico.</p></div><div class="header-actions"><button id="auditMods" class="outline-button"><svg><use href="icons.svg#shield"></use></svg>Controlla</button><button id="repairMods" class="outline-button"><svg><use href="icons.svg#refresh"></use></svg>Ripara</button><button class="outline-button" data-open-folder="mods"><svg><use href="icons.svg#folder"></use></svg>Cartella mods</button></div></div>
+        <div id="modSafetyNotice" class="safety-notice panel"><svg><use href="icons.svg#shield"></use></svg><div><strong>Protezione file vanilla attiva</strong><small>Stellar non sostituisce item, modelli o texture di Minecraft. Ogni versione usa un’istanza separata e le mod vengono scaricate solo su richiesta.</small></div><span id="modAuditStatus" class="status-pill muted">NON CONTROLLATO</span></div>
+        <div id="modCompatibilityNotice" class="compatibility-note panel checking"><span class="compat-dot"></span><div><strong>Controllo profilo Modrinth…</strong><small>Il catalogo viene abilitato solo per una combinazione Minecraft + Fabric realmente disponibile.</small></div></div>
+        <div class="mods-toolbar panel">
+          <label class="search-field"><svg><use href="icons.svg#search"></use></svg><input id="modSearch" type="search" placeholder="Cerca Sodium, Iris, Zoomify…"></label>
+          <select id="modSort"><option value="relevance">Rilevanza</option><option value="downloads">Download</option><option value="updated">Aggiornate</option><option value="newest">Più recenti</option></select>
+          <button id="searchModsButton" class="primary-button"><svg><use href="icons.svg#search"></use></svg>Cerca</button>
+        </div>
+        <div class="preset-row">
+          <button class="preset-card" data-preset="performance"><span class="preset-icon">FPS</span><div><strong>Performance</strong><small>Sodium, Lithium e ottimizzazioni</small></div><svg><use href="icons.svg#download"></use></svg></button>
+          <button class="preset-card" data-preset="essential"><span class="preset-icon">CORE</span><div><strong>Essenziali</strong><small>Fabric API, Mod Menu, Iris e Zoom</small></div><svg><use href="icons.svg#download"></use></svg></button>
+          <button class="preset-card" data-preset="pvp"><span class="preset-icon">PVP</span><div><strong>PvP pulito</strong><small>Prestazioni e utilità consentite</small></div><svg><use href="icons.svg#download"></use></svg></button>
+        </div>
+        <div class="tabs"><button class="active" data-mod-tab="browse">Esplora</button><button data-mod-tab="installed">Installate <span id="installedCount">0</span></button></div>
+        <div id="modBrowse" class="mod-view active"><div id="modResults" class="mod-grid"><div class="empty-state">Cerca una mod o installa un pacchetto consigliato.</div></div><button id="loadMoreMods" class="load-more hidden">Carica altri risultati</button></div>
+        <div id="modInstalled" class="mod-view"><div id="installedMods" class="installed-list"></div></div>
+      </section>
+
+      <section class="page" id="page-friends">
+        <div class="page-header"><div><span class="section-kicker">STELLAR SOCIAL</span><h1>Amici</h1><p>Gestisci la lista amici. Lo stato online richiede il servizio community configurato.</p></div></div>
+        <div class="friends-layout">
+          <section class="friends-panel panel"><div class="friends-add"><label class="search-field"><svg><use href="icons.svg#users"></use></svg><input id="friendName" maxlength="16" placeholder="Nickname Minecraft"></label><button id="addFriendButton" class="primary-button"><svg><use href="icons.svg#plus"></use></svg>Aggiungi</button></div><div id="friendsList" class="friends-list"></div></section>
+          <aside class="social-status panel"><div class="social-orb"><svg><use href="icons.svg#users"></use></svg></div><h3>Stellar Social</h3><p id="socialStatusText">Modalità locale. Configura l’URL del servizio community per presenza e richieste reali.</p><span id="socialModePill" class="status-pill muted">LOCALE</span></aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-discord">
+        <div class="page-header"><div><span class="section-kicker">ACCOUNT LINK</span><h1>Discord</h1><p>Collega il profilo con OAuth2 PKCE, abilita la Rich Presence e autorizza il bot Stellar.</p></div><div class="header-actions"><button id="discordInviteBot" class="outline-button"><svg><use href="icons.svg#discord"></use></svg>Autorizza bot</button><button id="discordConnect" class="primary-button"><svg><use href="icons.svg#link"></use></svg>Collega Discord</button></div></div>
+        <div class="discord-layout">
+          <section class="discord-profile panel">
+            <div id="discordAvatar" class="discord-avatar"><svg><use href="icons.svg#discord"></use></svg></div>
+            <div class="discord-profile-copy"><span class="section-kicker">PROFILO COLLEGATO</span><h2 id="discordName">Nessun account</h2><p id="discordStatusText">Premi “Collega Discord” e autorizza l’app nel browser. Il client secret non viene salvato nel launcher.</p><div class="discord-actions"><span id="discordStatusPill" class="status-pill muted">SCOLLEGATO</span><button id="discordLogout" class="text-button hidden">Disconnetti</button></div></div>
+          </section>
+          <section class="integration-grid">
+            <article class="integration-card panel"><svg><use href="icons.svg#users"></use></svg><div><strong>Amici e presenza</strong><p>Il backend Stellar può sincronizzare amici, stato online e server corrente.</p></div></article>
+            <article class="integration-card panel"><svg><use href="icons.svg#discord"></use></svg><div><strong>Rich Presence</strong><p>Mostra nel profilo Discord quando sei nel launcher o dentro Minecraft.</p></div><input id="discordPresenceQuick" type="checkbox" class="switch" checked></article>
+            <article class="integration-card panel"><svg><use href="icons.svg#shield"></use></svg><div><strong>Bot autorizzato</strong><p>Invito con scope bot e applications.commands, usando solo i permessi configurati.</p></div></article>
+            <article class="integration-card panel"><svg><use href="icons.svg#link"></use></svg><div><strong>Callback locale</strong><p id="discordCallbackInfo">http://127.0.0.1:8787/auth/discord/callback</p></div></article>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-store">
+        <div class="page-header"><div><span class="section-kicker">STELLAR STORE</span><h1>Store</h1><p>Cosmetici originali acquistabili con Stellar Coins. Nessun item o modello vanilla viene sostituito.</p></div><div class="header-actions"><div class="wallet-large"><small>SALDO</small><strong id="storeCoins">—</strong><span>Stellar Coins</span></div><button id="openStoreButton" class="outline-button"><svg><use href="icons.svg#external"></use></svg>Store web</button><button id="refreshStore" class="outline-button"><svg><use href="icons.svg#refresh"></use></svg>Aggiorna</button></div></div>
+        <section class="store-hero panel"><div class="store-glow"></div><div class="store-copy"><span class="section-kicker">COLLEZIONE STELLAR</span><h2>Personalizza il profilo, non Minecraft.</h2><p>I cosmetici sono livelli separati del client. Non modificano spade, blocchi, inventario, texture o ID degli item vanilla.</p><button id="openStoreHero" class="outline-button"><svg><use href="icons.svg#external"></use></svg>Store web</button></div><div class="store-logo"><video autoplay muted loop playsinline><source src="assets/logo-loop.mp4" type="video/mp4"></video><img src="assets/logo-static.png" alt=""></div></section>
+        <div id="storeItems" class="store-grid"><div class="empty-state">Collega Discord per caricare lo Store Stellar.</div></div>
+      </section>
+
+      <section class="page" id="page-quests">
+        <div class="page-header"><div><span class="section-kicker">PROGRESSIONE</span><h1>Quest</h1><p>Completa obiettivi verificati dal backend e riscatta Stellar Coins.</p></div><button id="refreshQuests" class="outline-button"><svg><use href="icons.svg#refresh"></use></svg>Aggiorna</button></div>
+        <section class="quest-summary panel"><div><small>STELLAR COINS</small><strong id="questCoins">—</strong></div><div><small>PIANO</small><strong id="questPremium">FREE</strong></div><div><small>DISCORD</small><strong id="questDiscord">NON COLLEGATO</strong></div></section>
+        <div id="questList" class="quest-grid"><div class="empty-state">Collega Microsoft e Discord per visualizzare le quest.</div></div>
+      </section>
+
+      <section class="page" id="page-cosmetics">
+        <div class="page-header"><div><span class="section-kicker">PERSONALIZZAZIONE</span><h1>Cosmetici</h1><p>Base grafica pronta per mantelli, ali, badge e particelle del client.</p></div></div>
+        <div class="cosmetics-layout">
+          <section class="character-preview panel"><div class="preview-stage"><div class="preview-ring"></div><div class="player-silhouette"><span></span></div></div><div class="preview-copy"><span class="section-kicker">ANTEPRIMA</span><h2 id="cosmeticName">Stellar Cape</h2><p>La sincronizzazione in gioco richiede il backend cosmetici e il modulo Fabric incluso nei sorgenti.</p></div></section>
+          <section class="cosmetic-grid">
+            <button class="cosmetic-card selected" data-cosmetic="Stellar Cape"><span class="cosmetic-shape cape"></span><strong>Stellar Cape</strong><small>Selezionato</small></button>
+            <button class="cosmetic-card" data-cosmetic="Nebula Wings"><span class="cosmetic-shape wings"></span><strong>Nebula Wings</strong><small>Anteprima</small></button>
+            <button class="cosmetic-card" data-cosmetic="Founder Badge"><span class="cosmetic-shape badge"></span><strong>Founder Badge</strong><small>Anteprima</small></button>
+            <button class="cosmetic-card" data-cosmetic="Orbit Trail"><span class="cosmetic-shape trail"></span><strong>Orbit Trail</strong><small>Anteprima</small></button>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-news">
+        <div class="page-header"><div><span class="section-kicker">AGGIORNAMENTI</span><h1>Annunci</h1><p>Novità, manutenzioni e aggiornamenti del client.</p></div><button id="refreshNews" class="outline-button"><svg><use href="icons.svg#refresh"></use></svg>Aggiorna</button></div>
+        <div id="announcementList" class="announcement-list"></div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-header"><div><span class="section-kicker">CONFIGURAZIONE</span><h1>Impostazioni</h1><p>Profili, Java, memoria, interfaccia e servizi Stellar.</p></div><button id="saveSettings" class="primary-button"><svg><use href="icons.svg#check"></use></svg>Salva</button></div>
+        <div class="settings-grid">
+          <section class="settings-card panel"><div class="settings-title"><svg><use href="icons.svg#grid"></use></svg><div><h3>Profilo di gioco</h3><p>Versione, loader e istanze separate</p></div></div>
+            <label class="setting-row"><div><strong>Versione Minecraft</strong><small>Solo release stabili ufficiali</small></div><select id="settingsVersion"></select></label>
+            <label class="setting-row"><div><strong>Loader</strong><small>Fabric abilita le mod</small></div><select id="settingsLoader"><option value="fabric">Fabric</option><option value="vanilla">Vanilla</option></select></label>
+            <label class="setting-row"><div><strong>Fabric Loader</strong><small>Latest usa la versione stabile compatibile</small></div><select id="loaderVersion"><option value="latest">Latest stable</option></select></label>
+            <label class="setting-row"><div><strong>Istanze separate</strong><small>Mods e configurazioni isolate per versione</small></div><input id="separateInstances" type="checkbox" class="switch"></label>
+          </section>
+          <section class="settings-card panel"><div class="settings-title"><svg><use href="icons.svg#shield"></use></svg><div><h3>Prestazioni</h3><p>RAM e runtime Java</p></div></div>
+            <input id="memoryMin" type="hidden" value="2">
+            <label class="setting-column ram-setting">
+              <div class="ram-setting-head"><div><strong>RAM allocata</strong><small>Trascina il cursore tenendo premuto il mouse</small></div><b id="memoryMaxValue">6 GB</b></div>
+              <input id="memoryMax" class="memory-slider" type="range" min="2" max="16" step="1" value="6">
+              <div class="memory-scale"><span>2 GB</span><span>4 GB</span><span>8 GB</span><span>12 GB</span><span>16 GB</span></div>
+              <small class="ram-advice">Consigliato: 4–8 GB. Assegnare troppa RAM può peggiorare la fluidità.</small>
+            </label>
+            <label class="setting-column"><div><strong>Java</strong><small>javaw.exe compatibile</small></div><div class="input-action"><input id="javaPath" type="text"><button id="browseJava">Sfoglia</button><button id="detectJava">Rileva</button></div></label>
+          </section>
+          <section class="settings-card panel"><div class="settings-title"><svg><use href="icons.svg#folder"></use></svg><div><h3>File e avvio</h3><p>Directory e server rapido</p></div></div>
+            <label class="setting-column"><div><strong>Directory Minecraft</strong><small>Root condivisa delle istanze</small></div><div class="input-action"><input id="minecraftRoot" type="text"><button id="browseMinecraftRoot">Sfoglia</button></div></label>
+            <label class="setting-column"><div><strong>Server rapido</strong><small>Indirizzo da aprire dopo l’avvio</small></div><input id="serverAddress" type="text" placeholder="stellar-pvp.it"></label>
+            <label class="setting-row"><div><strong>Chiudi launcher all’avvio</strong><small>Il client riappare alla chiusura del gioco</small></div><input id="closeOnStart" type="checkbox" class="switch"></label>
+          </section>
+          <section class="settings-card panel"><div class="settings-title"><svg><use href="icons.svg#palette"></use></svg><div><h3>Interfaccia</h3><p>Scala e animazioni</p></div></div>
+            <label class="setting-row"><div><strong>Tema</strong><small>Palette originale del launcher</small></div><select id="themeSelect"><option value="aurora">Aurora</option><option value="noctis">Noctis</option><option value="frost">Frost</option><option value="tempest">Tempest</option></select></label>
+            <label class="setting-row"><div><strong>Scala UI</strong><small>80%–125%</small></div><input id="uiScale" type="range" min="80" max="125" step="5"><b id="uiScaleValue">100%</b></label>
+            <label class="setting-row"><div><strong>Riduci animazioni</strong><small>Disattiva glow e transizioni pesanti</small></div><input id="reduceMotion" type="checkbox" class="switch"></label>
+            <label class="setting-row"><div><strong>Schermo intero Minecraft</strong><small>Avvia direttamente fullscreen</small></div><input id="fullscreen" type="checkbox" class="switch"></label>
+          </section>
+          <section class="settings-card panel wide"><div class="settings-title"><svg><use href="icons.svg#users"></use></svg><div><h3>Servizi Stellar</h3><p>Endpoint per annunci, amici e store</p></div></div>
+            <label class="setting-column"><div><strong>URL annunci JSON</strong><small>Lascia vuoto per gli annunci integrati</small></div><input id="announcementsUrl" type="url" placeholder="https://api.stellarclient.it/announcements"></label>
+            <label class="setting-column"><div><strong>URL servizio amici</strong><small>Backend richiesto per presenza online reale</small></div><input id="friendsServiceUrl" type="url" placeholder="https://api.stellarclient.it"></label>
+            <label class="setting-column"><div><strong>URL store</strong><small>Pagina HTTPS aperta dai pulsanti Store</small></div><input id="storeUrl" type="url" placeholder="https://stellarclient.it/store"></label>
+            <label class="setting-column"><div><strong>Catalogo Stellar Core</strong><small>Manifest HTTPS delle JAR compatibili per versione</small></div><input id="coreCatalogUrl" type="url" placeholder="https://cdn.stellarclient.it/core/catalog.json"></label>
+            <label class="setting-row"><div><strong>Installa Stellar Core automaticamente</strong><small>Solo quando esiste una build esatta per versione e Fabric</small></div><input id="autoInstallCore" type="checkbox" class="switch"></label>
+            <label class="setting-row"><div><strong>Proteggi risorse vanilla</strong><small>Blocca scritture automatiche in resourcepacks e assets</small></div><input id="protectVanillaResources" type="checkbox" class="switch"></label>
+            <label class="setting-column"><div><strong>Microsoft Application ID</strong><small>Applicazione pubblica Entra, nessun client secret</small></div><input id="microsoftClientId" type="text" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"></label>
+          </section>
+          <section class="settings-card panel wide"><div class="settings-title"><svg><use href="icons.svg#discord"></use></svg><div><h3>Discord e bot</h3><p>Callback sicuro sul backend, collegamento account e autorizzazione bot</p></div></div>
+            <label class="setting-column"><div><strong>Discord Application ID</strong><small>ID pubblico dell’applicazione/bot</small></div><input id="discordClientId" type="text" placeholder="1251494893407305791"></label>
+            <label class="setting-column"><div><strong>Redirect URI</strong><small>Callback HTTPS del backend registrato nel Developer Portal</small></div><input id="discordRedirectUri" type="url" placeholder="http://127.0.0.1:8787/auth/discord/callback"></label>
+            <label class="setting-column"><div><strong>Permessi bot</strong><small>Bitfield Discord; usa 0 per soli slash command</small></div><input id="discordBotPermissions" type="text" inputmode="numeric" placeholder="0"></label>
+            <label class="setting-column"><div><strong>Server Discord predefinito</strong><small>Guild ID opzionale per preselezionare il server</small></div><input id="discordGuildId" type="text" inputmode="numeric" placeholder="1528382367100571668"></label>
+            <label class="setting-row"><div><strong>Discord Rich Presence</strong><small>Stato launcher e Minecraft</small></div><input id="discordPresenceEnabled" type="checkbox" class="switch"></label>
+          </section>
+        </div>
+      </section>
+
+
+      <section class="page" id="page-admin">
+        <div class="page-header"><div><span class="section-kicker">ACCESSO VERIFICATO DISCORD</span><h1>Admin</h1><p>Visibile soltanto al proprietario, agli utenti con Administrator o ai ruoli configurati nel server Discord.</p></div><button id="refreshAdmin" class="outline-button"><svg><use href="icons.svg#refresh"></use></svg>Aggiorna</button></div>
+        <div class="admin-stats"><article class="panel"><small>UTENTI</small><strong id="adminUsers">0</strong></article><article class="panel"><small>ANNUNCI</small><strong id="adminNewsCount">0</strong></article><article class="panel"><small>QUEST</small><strong id="adminQuestCount">0</strong></article><article class="panel"><small>ACQUISTI</small><strong id="adminPurchaseCount">0</strong></article></div>
+        <div class="admin-grid">
+          <section class="admin-card panel"><span class="section-kicker">ANNUNCIO</span><h3>Pubblica aggiornamento</h3><input id="adminNewsTitle" type="text" maxlength="100" placeholder="Titolo"><textarea id="adminNewsBody" maxlength="2000" placeholder="Testo dell’annuncio"></textarea><select id="adminNewsType"><option value="update">Aggiornamento</option><option value="event">Evento</option><option value="maintenance">Manutenzione</option></select><button id="adminPublishNews" class="primary-button">Pubblica</button></section>
+          <section class="admin-card panel"><span class="section-kicker">ECONOMIA</span><h3>Modifica Stellar Coins</h3><input id="adminCoinPlayer" type="text" maxlength="16" placeholder="Nome Minecraft"><input id="adminCoinAmount" type="number" min="-1000000" max="1000000" placeholder="Importo"><input id="adminCoinReason" type="text" maxlength="180" placeholder="Motivo"><button id="adminApplyCoins" class="primary-button">Applica</button></section>
+          <section class="admin-card panel"><span class="section-kicker">PREMIUM</span><h3>Gestisci abbonamento</h3><input id="adminPremiumPlayer" type="text" maxlength="16" placeholder="Nome Minecraft"><input id="adminPremiumDays" type="number" min="0" max="3650" placeholder="Giorni, 0 per revocare"><button id="adminApplyPremium" class="primary-button">Aggiorna Premium</button></section>
+          <section class="admin-card panel"><span class="section-kicker">QUEST</span><h3>Crea obiettivo</h3><input id="adminQuestTitle" type="text" maxlength="100" placeholder="Titolo"><textarea id="adminQuestDescription" maxlength="500" placeholder="Descrizione"></textarea><div class="admin-inline"><input id="adminQuestReward" type="number" min="0" max="100000" placeholder="Coins"><input id="adminQuestTarget" type="number" min="1" max="100000" placeholder="Target"></div><input id="adminQuestEvent" type="text" maxlength="64" placeholder="Evento: wins, minutes_played..."><label class="admin-check"><input id="adminQuestDaily" type="checkbox" checked>Reset giornaliero</label><button id="adminCreateQuest" class="primary-button">Crea quest</button></section>
+        </div>
+        <section class="panel admin-audit"><div class="section-heading"><div><span class="section-kicker">AUDIT LOG</span><h2>Azioni recenti</h2></div></div><div id="adminAuditList" class="audit-list"><div class="empty-state">Nessuna azione.</div></div></section>
+      </section>
+
+      <section class="page" id="page-logs">
+        <div class="page-header"><div><span class="section-kicker">DIAGNOSTICA</span><h1>Console</h1><p>Download, avvio, autenticazione e errori del client.</p></div><div class="header-actions"><button id="openLogs" class="outline-button"><svg><use href="icons.svg#folder"></use></svg>Cartella log</button><button id="clearLogs" class="outline-button">Pulisci</button></div></div>
+        <div class="console panel"><div class="console-header"><span><i></i>STELLAR SESSION</span><small id="consoleTime"></small></div><pre id="logOutput"></pre></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="deviceModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <section class="modal-card">
+      <img src="assets/logo-static.png" alt="" class="modal-logo">
+      <span class="section-kicker">ACCESSO MICROSOFT</span><h2>Inserisci questo codice</h2>
+      <p id="deviceMessage">Apri la pagina Microsoft e inserisci il codice mostrato qui sotto.</p>
+      <button id="deviceCode" class="device-code">ATTENDI…</button>
+      <div class="modal-actions"><button id="openDevicePage" class="primary-button">Apri Microsoft</button><button id="closeDeviceModal" class="outline-button">Chiudi</button></div>
+    </section>
+  </div>
+  <div id="toastHost" class="toast-host"></div>
+  <script src="app.js"></script>
+</body>
+</html>

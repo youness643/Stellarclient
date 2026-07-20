@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "stellar_core",
+  "version": "${version}",
+  "name": "Stellar Client Core",
+  "description": "Menu principale, menu ESC, HUD, temi e impostazioni integrate di Stellar Client.",
+  "authors": ["Stellar Client"],
+  "contact": {
+    "homepage": "https://stellarclient.it"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "it.stellarclient.core.StellarClientMod"
+    ]
+  },
+  "mixins": [
+    "stellar-core.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.8",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
